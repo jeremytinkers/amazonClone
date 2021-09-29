@@ -1,71 +1,43 @@
 import React from "react";
+import Product from "./components/Product";
 import data from "./data";
+import { BrowserRouter, Route } from "react-router-dom";
+import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
 
 function App() {
   return (
-    <div classNameName="grid-container">
+
+    <BrowserRouter >
+      <div classNameName="grid-container">
 
         <header className="row">
 
-            <div className="brand">
-                <a href="index.html"> amazon</a>
-            </div>
-            <div className="leftHeaderSect">
-                <a className="leftLeftHeader" href="cart.html">Cart</a>
-                <a href="Sign in"> Sign-in  </a>
-            </div>
+          <div className="brand">
+            <a href="index.html"> amazon</a>
+          </div>
+          <div className="leftHeaderSect">
+            <a className="leftLeftHeader" href="cart.html">Cart</a>
+            <a href="Sign in"> Sign-in  </a>
+          </div>
 
 
         </header>
 
-
-
         <main>
-
-        <div className="row center">
-
-        {data.map((curP)=> 
         
-         
-<div className="card">
-
-    <div className="card-body">
-        <a href="product.html">
-            <img className="medium" src={"images/" + curP.imgSrc} alt="product image"></img>
-        </a>
-
-        <a href="product.html">
-            <h1>{curP.name}</h1>
-        </a>
-
-        <div className="rating">
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star-o"></i>
-
-        </div>
-
-        <div className="price">${curP.price}</div>
-
-
-    </div>
-
-</div>
-
-        
-        
-        )}
-
-            
-        </div>
-           
+          <Route path="/" component={HomeScreen} exact></Route>
+          <Route path="/product/:id" component={ProductScreen} exact></Route>
+          
+          {/* why no exact here? */}
+          
+          
         </main>
 
-        <footer className="row center">All Rights Reserved</footer>
+        <footer className="row center">Made With 🔥 by Jeremiah</footer>
 
-    </div>
+      </div>
+    </BrowserRouter>
 
   );
 }
