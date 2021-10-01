@@ -1,11 +1,42 @@
-import React from 'react'
-import data from '../data'
+
 import Rating from '../components/Rating';
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
 export default function ProductScreen(props) {
 
-    const product = data.find((x) => x.id === Number(props.match.params.id));
+    
+
+    // fetching data from backend
+    const [productsData, setProductsData] = useState([]);
+
+    useEffect(()=>{
+  
+    const fetchData = async () => {
+    await axios.get("/api/products")
+    .then(function (response) {
+      // handle success
+      
+      setProductsData(response.data);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+      console.log("Tried Accessing stuff");
+    });
+        
+        
+      };
+  
+      fetchData();
+    }, []);
+ 
+        
+    const product = productsData.find((x) => x.id === Number(props.match.params.id));
 
     if (!product) {
         return <div>Can't find Product Information</div>;
@@ -15,7 +46,7 @@ export default function ProductScreen(props) {
 <div>
         <div className="row">
 
-            <div className="col-1">
+            <div className="col-1 firstProd">
 
                 <img className="large" src={"/images/" + product.imgSrc} alt={product.name} />
 

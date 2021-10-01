@@ -173,6 +173,7 @@ font-weight: 600;
 }
 .col-2 {
   flex: 2 1 50rem;
+ 
 }
 
 .large{
@@ -261,4 +262,30 @@ width: 100%;
 font-size: 1rem;
 padding:0.3rem;
 font-weight: 300;
+}
+
+.firstProd{
+  margin-top: 2.3rem;
+  margin-left: 0.4rem;
+  margin-right: 1.4rem;
+}
+
+.errorMessage{
+
+  padding: 0.6rem;
+  text-align: center;
+  background-color: rgb(231, 64, 64);
+  border: 0.2rem black solid;
+  border-radius: 0.4rem;
+  width: 30%;
+  color: black;
+  font-size: large;
+  font-weight: 500;
+
+}
+
+.errorContainingDiv{
+  display: flex;
+ justify-content: center;
+ 
 }
