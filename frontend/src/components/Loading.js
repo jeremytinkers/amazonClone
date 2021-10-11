@@ -1,7 +1,9 @@
+import React from 'react';
+
 export default function Loading() {
-    return (
-        <div>
-            <i class="fa fa-spinner"></i> Loading.....
-        </div>
-    )
+  return (
+    <div>
+      <i className="fa fa-spinner fa-spin"></i> Loading...
+    </div>
+  );
 }

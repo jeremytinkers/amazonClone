@@ -1,4 +1,4 @@
-//data.mjs:
+
 const data = [
     
     {

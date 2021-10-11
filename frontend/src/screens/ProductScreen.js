@@ -3,53 +3,38 @@ import Rating from '../components/Rating';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import { useDispatch, useSelector } from 'react-redux';
+import { detailsProduct } from '../actions/productActions';
+import Loading from '../components/Loading';
+import ErrorMessage from '../components/ErrorMessage';
 
 export default function ProductScreen(props) {
 
+    const dispatch = useDispatch();
+    const productId = props.match.params.id;
+    const productDetails = useSelector((state) => state.productDetails || {});
+    const { loading, error, product } = productDetails;
+    console.log("apiresult :  " + JSON.stringify(productDetails)  );
+    
+  
+    useEffect(() => {
+      dispatch(detailsProduct(productId));
+    }, [dispatch, productId]);
 
-
-    // fetching data from backend
-    const [productsData, setProductsData] = useState([]);
+    
+    //For select drop down, will remove this hook later
     const [qty, setQty] = useState(1);
 
-    //axios request
-    useEffect(() => {
-
-        const fetchData = async () => {
-            await axios.get("/api/products")
-                .then(function (response) {
-                    // handle success
-
-                    setProductsData(response.data);
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-                .then(function () {
-                    // always executed
-                    console.log("Tried Accessing stuff");
-                });
-
-
-        };
-
-        fetchData();
-    }, []);
-
- 
-    const product = productsData.find((x) => x.id === Number(props.match.params.id));
 
     function addToCartHandler(){
         props.history.push(`/cart/${product.id}?qty=${qty}`)
     }
 
-    if (!product) {
-        return <div>Can't find Product Information</div>;
-    }
-
     return (
+        
         <div>
+        {loading? <Loading /> : (error)? <ErrorMessage eMsg={error}/> :
+            <div>
             <div className="row">
 
                 <div className="col-1 firstProd">
@@ -132,8 +117,11 @@ export default function ProductScreen(props) {
             </div>
 
             <Link to="/"><h3 className="returnHS">Return to Home Screen <i class="fa fa-home"></i></h3></Link>
-
+        
         </div>
+        }
+        </div>
+    
 
     )
 }

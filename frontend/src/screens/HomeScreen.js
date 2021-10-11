@@ -3,48 +3,27 @@ import Product from '../components/Product'
 import axios from "axios"
 import Loading from '../components/Loading';
 import ErrorMessage from '../components/ErrorMessage';
+import { useDispatch, useSelector } from 'react-redux';
+import { listProducts } from '../actions/productActions';
 
 export default function HomeScreen() {
 
-  const [productsData, setProductsData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const dispatch = useDispatch();
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
 
+  useEffect(() => {
+    dispatch(listProducts());
+  }, [dispatch]);
 
-  useEffect(()=>{
-  
-    const fetchData = async () => {
-    await  axios.get("/api/products")
-    .then(function (response) {
-      // handle success
-      setLoading(true);
-      console.log(loading + " -> loading");
-      setProductsData(response.data);
-      console.log(loading + " -> loading");
-      setLoading(false);
-      console.log(loading + " -> loading");
-    })
-    .catch(function (err) {
-      // handle error
-      setError(err.message)
-    })
-    .then(function () {
-      // always executed
-    });
-        
-      };
-  
-      fetchData();
-    }, []);
-    
- 
   return (
+
 
     <div>
      
       {loading ? (<Loading></Loading>) : error? <ErrorMessage eMsg={error}/>: (<div className="row center">
 
-        {productsData.map((curP) =>
+        {products.data.map((curP) =>
 
           <Product key={curP.id} product={curP} />
 
@@ -53,15 +32,6 @@ export default function HomeScreen() {
 
       }
     </div>
-    // <div className="row center">
-
-    //     {productsData.map((curP) =>
-
-    //       <Product key={curP.id} product={curP} />
-
-    //     )}
-    //   </div>
-
 
   )
 }
