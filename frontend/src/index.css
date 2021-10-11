@@ -293,3 +293,21 @@ font-weight: 300;
 .qtyDiv{
   margin-top: 0.3rem;
 }
+
+/* cart on app.js */
+.badge {
+  background-color: #df3535;
+  color: #ffffff;
+  border-radius: 100%;
+  padding: 0.2rem 0.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-left: 0.3rem;
+}
+
+.badge:hover{
+  color:black;
+  background-color: #f80606;
+  cursor: pointer;
+
+}

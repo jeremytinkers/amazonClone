@@ -1,11 +1,16 @@
 import React from "react";
 import Product from "./components/Product";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Link, Route } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
-import CartScreen from "./components/CartScreen";
+import CartScreen from "./screens/CartScreen";
+import { useSelector } from "react-redux";
 
 function App() {
+
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+
   return (
 
     <BrowserRouter >
@@ -17,7 +22,16 @@ function App() {
             <a href="index.html"> amazon</a>
           </div>
           <div className="leftHeaderSect">
-            <a className="leftLeftHeader" href="cart.html">Cart</a>
+            {/* <a className="leftLeftHeader" href="cart.html">Cart</a> */}
+
+            <Link to="/cart" className="leftLeftHeader" >
+              Cart
+              {cartItems.length > 0 && (
+                <span className="badge">{cartItems.length}</span>
+              )}
+            </Link>
+
+            
             <a href="Sign in"> Sign-in  </a>
           </div>
 

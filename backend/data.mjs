@@ -20,7 +20,7 @@ const data = [
         rating:4.5,
         noReviews:9910,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    , curStock:0
+    , curStock:13
     },
         
     {
@@ -51,7 +51,7 @@ const data = [
         rating:4.5,
         noReviews:276,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        , curStock:4
+        , curStock:13
     },
 
 

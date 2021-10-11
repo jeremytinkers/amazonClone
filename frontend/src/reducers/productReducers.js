@@ -12,8 +12,6 @@ const {
     state = { loading: true, products: [] },
     action
   ) => {
-    console.log("ap1 : " + action.payload);
-    console.log("apiS: "+ JSON.stringify(action.payload))
     switch (action.type) {
       case PRODUCT_LIST_REQUEST:
         return { loading: true };
@@ -31,9 +29,6 @@ const {
     state = { product: {}, loading: true },
     action
   ) => {
-
-    console.log("ap : " + action.payload);
-
     switch (action.type) {
       case PRODUCT_DETAILS_REQUEST:
         return { loading: true };

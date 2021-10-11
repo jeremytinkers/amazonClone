@@ -26,8 +26,6 @@ export const detailsProduct = (productId) => async (dispatch) => {
     dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });
     try {
       const { data } = await Axios.get(`/api/products/${productId}`);
-      console.log("data action : " + data);
-      console.log("data strignifeied :" + JSON.stringify(data))
       dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
     } catch (error) {
       dispatch({

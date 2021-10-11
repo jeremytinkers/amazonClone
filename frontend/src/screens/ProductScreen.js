@@ -13,9 +13,7 @@ export default function ProductScreen(props) {
     const dispatch = useDispatch();
     const productId = props.match.params.id;
     const productDetails = useSelector((state) => state.productDetails || {});
-    const { loading, error, product } = productDetails;
-    console.log("apiresult :  " + JSON.stringify(productDetails)  );
-    
+    const { loading, error, product } = productDetails;  
   
     useEffect(() => {
       dispatch(detailsProduct(productId));
