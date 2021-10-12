@@ -12,9 +12,8 @@ app.get("/api/products", (req,res)=>{
 
 app.get('/api/products/:id', (req, res) => {
     //Find the particular product
-    console.log("Server: " + req.params.id)
     const product = data.find((x) => x.id == req.params.id);
-    console.log(product);
+    
     if (product) {
       res.send(product);
     } else {

@@ -1,6 +1,6 @@
 //Add To Cart Action:-
 import Axios from "axios";
-import { ADD_TO_CART } from "../constants/cartConstants";
+import { ADD_TO_CART, CART_DELETE_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 import store from "../store";
 
 export const addToCart = (productId, qty) => async (dispatch) => {
@@ -24,3 +24,9 @@ export const addToCart = (productId, qty) => async (dispatch) => {
 }
 
 
+export const deleteFromCart = (productId) => (dispatch, getState) => {
+    console.log("action just dispatched");
+    dispatch({ type: CART_DELETE_ITEM, payload: productId });
+    console.log("return to action");
+    localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+  };

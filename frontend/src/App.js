@@ -19,7 +19,7 @@ function App() {
         <header className="row">
 
           <div className="brand">
-            <a href="index.html"> amazon</a>
+             <Link to="/"> amazon</Link>
           </div>
           <div className="leftHeaderSect">
             {/* <a className="leftLeftHeader" href="cart.html">Cart</a> */}

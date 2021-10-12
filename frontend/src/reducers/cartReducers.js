@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from '../constants/cartConstants';
+import { ADD_TO_CART, CART_DELETE_ITEM, CART_REMOVE_ITEM } from '../constants/cartConstants';
 
 export const cartReducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
@@ -15,43 +15,14 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       } else {
         return { ...state, cartItems: [...state.cartItems, item] };
       }
+    case CART_DELETE_ITEM:
+      console.log("reducer just ran");
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((x) => x.product !== action.payload), //compare against index sent by action
+      };
     default:
       return state;
   }
 };
 
-
-// import { CART_ADD_ITEM } from '../constants/cartConstants';
-
-// export const cartReducer = (state = { cartItems: [] }, action) => {
-//   switch (action.type) {
-//     case CART_ADD_ITEM:
-    
-//     const item = action.payload;
-
-//     var exists=0;
-
-
-    
-//     var cartItemsNew = cartItems;
-
-//     // In the event, the user adds an existing Item, the qty adds up:-
-//     for (var i = 0; i < cartItems.length; i++) {
-//         if(cartItems[i].product === item.product){
-//             cartItems[i].qty+= item.qty; // qty adds up
-//             return 
-//             exists=1;
-//             break;
-//         }
-//     }
-
-//     if (!exists) {
-//         {
-//         return { ...state, cartItems: [...state.cartItems, item] };
-//       }
-//     }
-
-//     default:
-//       return state;
-//   }
-// };
