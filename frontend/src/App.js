@@ -25,7 +25,8 @@ function App() {
             {/* <a className="leftLeftHeader" href="cart.html">Cart</a> */}
 
             <Link to="/cart" className="leftLeftHeader" >
-              Cart
+            
+              <i class="fa fa-shopping-cart"></i>
               {cartItems.length > 0 && (
                 <span className="badge">{cartItems.length}</span>
               )}

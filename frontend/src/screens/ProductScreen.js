@@ -2,7 +2,6 @@
 import Rating from '../components/Rating';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux';
 import { detailsProduct } from '../actions/productActions';
 import Loading from '../components/Loading';
@@ -25,7 +24,7 @@ export default function ProductScreen(props) {
 
 
     function addToCartHandler(){
-        props.history.push(`/cart/${product.id}?qty=${qty}`)
+        props.history.push(`/cart/${product._id}?qty=${qty}`)
     }
 
     return (

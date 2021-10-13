@@ -16,7 +16,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
         return { ...state, cartItems: [...state.cartItems, item] };
       }
     case CART_DELETE_ITEM:
-      console.log("reducer just ran");
+      // console.log("reducer just ran");
       return {
         ...state,
         cartItems: state.cartItems.filter((x) => x.product !== action.payload), //compare against index sent by action
